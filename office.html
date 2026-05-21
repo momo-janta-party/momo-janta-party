@@ -75,10 +75,15 @@
         <div class="card" id="registrationCard">
             <form id="partyForm">
                 <div class="form-group">
-                    <label for="comradeName">Full Name</label>
-                    <input type="text" id="comradeName" class="form-control" required placeholder="Enter your name">
+                    <label for="comradeName">Name or Nickname</label>
+                    <input type="text" id="comradeName" class="form-control" required placeholder="e.g. Momo King">
                 </div>
                 
+                <div class="form-group">
+                    <label for="xHandle">X (Twitter) Handle</label>
+                    <input type="text" id="xHandle" class="form-control" placeholder="@username">
+                </div>
+
                 <div class="form-group">
                     <label for="momoPref">Preferred Momo Filling</label>
                     <select id="momoPref" class="form-control" required>
@@ -100,11 +105,34 @@
         </div>
 
         <div id="welcomeMessage">
-            <h3 style="color: var(--primary-color); margin-bottom: 0.5rem;">Welcome, Comrade <span id="outName"></span>!</h3>
-            <p>Your official party membership is confirmed. A daily plate of <strong id="outPref"></strong> momos (Spice Level: <strong id="outSpice"></strong>) has been added to your Universal Basic Momo quota.</p>
+            <h2 style="color: var(--primary-color); margin-bottom: 1rem;">Registration Successful! 🎉</h2>
+            <div style="background: linear-gradient(135deg, rgba(255,140,0,0.2) 0%, rgba(255,0,0,0.1) 100%); border: 2px solid var(--primary-color); border-radius: 15px; padding: 2rem; position: relative; overflow: hidden; text-align: left; box-shadow: 0 10px 30px rgba(255,140,0,0.2);">
+                <div style="position: absolute; top: -20px; right: -20px; opacity: 0.1; font-size: 10rem;">🥟</div>
+                <div style="display: flex; align-items: center; gap: 1rem; border-bottom: 1px solid rgba(255,140,0,0.3); padding-bottom: 1rem; margin-bottom: 1rem;">
+                    <img src="assets/images/logo.png" style="width: 50px; border-radius: 50%;">
+                    <div>
+                        <h3 style="margin: 0; color: white;">Momo Janta Party</h3>
+                        <small style="color: var(--primary-color);">Official Digital ID Card</small>
+                    </div>
+                </div>
+                <p style="margin: 0.5rem 0; color: var(--text-muted);"><strong>Name:</strong> <span id="outName" style="color: white; font-size: 1.2rem;"></span></p>
+                <p style="margin: 0.5rem 0; color: var(--text-muted);"><strong>X (Twitter):</strong> <span id="outX" style="color: #1DA1F2;"></span></p>
+                <p style="margin: 0.5rem 0; color: var(--text-muted);"><strong>Filling:</strong> <span id="outPref" style="color: white;"></span></p>
+                <p style="margin: 0.5rem 0; color: var(--text-muted);"><strong>Spice Tolerance:</strong> Level <span id="outSpice" style="color: red; font-weight: bold;"></span></p>
+                <div style="margin-top: 1.5rem; text-align: center;">
+                    <button class="btn" style="padding: 0.5rem 1.5rem; font-size: 0.9rem;" onclick="alert('Screenshot this card and share it on X tagging @momo_janta_party!')">📸 Share ID Card</button>
+                </div>
+            </div>
         </div>
     </main>
 
     <script src="office.js"></script>
+
+    <footer style="margin-top: 4rem; text-align: center; padding: 2rem; border-top: 1px solid rgba(255,140,0,0.2);">
+        <p style="color: var(--text-muted); font-size: 0.9rem;">
+            Lead Developer & President: <a href="https://github.com/divyansh-rawat" target="_blank" style="color: var(--primary-color); text-decoration: none; font-weight: bold;">@divyansh-rawat</a>
+        </p>
+    </footer>
 </body>
+
 </html>
