@@ -5,8 +5,8 @@
   ### *"Steaming Ahead to a Better Tomorrow!"*
 
   <p>
-    <img src="https://img.shields.io/badge/Status-Steaming_Hot-ff8c00?style=for-the-badge" alt="Status" />
-    <img src="https://img.shields.io/badge/Chutney-Spicy-red?style=for-the-badge" alt="Chutney" />
+    <img src="https://img.shields.io/badge/Status-Steaming_Hot-ff8c00?style=for-the-badge&logo=fire" alt="Status" />
+    <img src="https://img.shields.io/badge/Chutney-Extremely_Spicy-red?style=for-the-badge" alt="Chutney" />
     <img src="https://img.shields.io/badge/Mayonnaise-Banned-black?style=for-the-badge" alt="Mayo" />
   </p>
 
@@ -20,7 +20,7 @@
 <br>
 
 <div align="center">
-  <img src="manifesto_poster.png" alt="Momo Janta Party Manifesto Cinematic Poster" width="800" style="border-radius: 15px; box-shadow: 0 10px 30px rgba(255, 140, 0, 0.4);" />
+  <img src="manifesto_poster.png" alt="Momo Janta Party Manifesto Cinematic Poster" width="100%" style="border-radius: 15px; box-shadow: 0 10px 30px rgba(255, 140, 0, 0.4);" />
 </div>
 
 ---
@@ -36,10 +36,7 @@ We stand for **Equality, Steamed Progress, and Spicy Justice**. No citizen shoul
 Our repository isn't just code. It is the beating heart of a culinary revolution. We have designed a state-of-the-art web platform to serve the citizens.
 
 ### 1️⃣ The Manifesto (`index.html`)
-The holy scripture of the MJP. The landing page features a gorgeous, glassmorphism-inspired UI with saffron accents. Read our key pledges, including:
-- **Universal Basic Momo (UBM):** Guaranteed daily momos for all citizens.
-- **The Chutney Regulation Act:** Federal oversight of red chili supply chains.
-- **Fried Momo Weekends:** State-subsidized indulgence.
+The landing page features a gorgeous, glassmorphism-inspired UI with saffron accents. Read our key pledges, including the **Universal Basic Momo (UBM)** and **Fried Momo Weekends**.
 
 ### 2️⃣ The Party Office (`office.html`)
 Become an official comrade! Sign the register, state your preferred momo filling, and declare your spice tolerance. 
@@ -48,15 +45,25 @@ Become an official comrade! Sign the register, state your preferred momo filling
 ### 3️⃣ Citizen Portal (`portal.html`)
 Interactive tools for the modern comrade!
 - **🧾 Momo Tax Calculator:** Calculate your civic dues (payable in napkins).
-- **🗺️ Bad Chutney Heatmap:** Live tracking of mayonnaise violations across the city.
+- **🗺️ Bad Chutney Heatmap:** Live tracking of mayonnaise violations across the city. *(See below!)*
 - **🌶️ The Chutney Spice Test:** Find out your rank. Are you a Mild Supporter or a Schezwan Supreme Leader?
 - **🎶 National Anthem:** Stand up and press play on the official lo-fi anthem curated by the Dept. of Melody Affairs.
 
 <br>
 
 <div align="center">
-  <img src="anti_mayo_poster.png" alt="Anti Mayo Propaganda" width="400" style="border-radius: 15px; box-shadow: 0 10px 30px rgba(255, 0, 0, 0.4);" />
-  <p><em>Official Anti-Mayo Propaganda distributed by the MJP.</em></p>
+  <table>
+    <tr>
+      <td align="center">
+        <b>🚨 Tactical Heatmap (Live Mayo Tracking)</b><br>
+        <img src="heatmap_poster.png" alt="Heatmap Poster" width="400" style="border-radius: 15px; box-shadow: 0 5px 15px rgba(255,0,0,0.3);" />
+      </td>
+      <td align="center">
+        <b>🖼️ MJP Official Propaganda</b><br>
+        <img src="anti_mayo_poster.png" alt="Anti Mayo Propaganda" width="400" style="border-radius: 15px; box-shadow: 0 5px 15px rgba(255,140,0,0.3);" />
+      </td>
+    </tr>
+  </table>
 </div>
 
 ---
@@ -71,10 +78,15 @@ The bureaucratic backbone of our great nation. We have decentralized power into 
 | 🥟 | **Filling Allocation Board** | Managing fair distribution of veg, paneer, pork, and chicken fillings. |
 | 🥡 | **Bureau of Packaging** | Developing eco-friendly, un-soggy bamboo takeaway boxes. |
 | ✊‍♀️ | **Dept. of Feminist Affairs** | Smashing the patriarchy one dumpling at a time; equal pay for vendors. |
-| 💅 | **Dept. of Baddies Affairs** | Ensuring everyone slays and providing state-funded touch-ups. |
 | 👩‍❤️‍👩 | **Dept. of Lesbian Affairs** | Fostering inclusivity and guaranteeing love and momo-sharing are universal rights. |
 | 🌈 | **Dept. of Gay Affairs** | Ensuring the momo selection is as colorful and diverse as our people. |
 | 🌶️👩🏽 | **Schezwan Mahila Morcha** | The fiercest women's wing defending the spice tolerance of the nation. |
+
+### 🔥 Spotlight: The Department of Baddies Affairs
+Ensuring the nation always slays. Serving aesthetics and state-funded touch-ups.
+<div align="center">
+  <img src="baddies_poster.png" alt="Dept of Baddies Affairs Neon Sign" width="500" style="border-radius: 15px; box-shadow: 0 10px 30px rgba(255, 0, 128, 0.4);" />
+</div>
 
 ### 🍬 Special Mention: Dept. of Melody Affairs
 <div align="center">
