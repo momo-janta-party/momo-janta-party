@@ -139,7 +139,11 @@ graph TD;
 
 ## 💻 Section V: Developer Guide (Join the IT Cell)
 
-This revolution is powered by modern, premium web technologies. If you wish to join the MJP IT Cell, follow these instructions:
+This revolution is powered by modern, premium web technologies. We are 100% open-source and actively looking for contributors!
+
+**[➡️ Click here to read our full CONTRIBUTING.md guide on how to clone, run, and submit PRs!](CONTRIBUTING.md)**
+
+If you wish to quickly join the MJP IT Cell, follow these brief instructions:
 
 ### Tech Stack
 - **HTML5 & Vanilla CSS** (Glassmorphism, dynamic gradients, CSS variables)
