@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MJP Party Office</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;500;800&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="index.css">
+    <style>
+        .office-container {
+            max-width: 600px;
+            margin: 4rem auto;
+            text-align: center;
+        }
+        .form-group {
+            margin-bottom: 1.5rem;
+            text-align: left;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--text-muted);
+            font-weight: 500;
+        }
+        .form-control {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            border-radius: 10px;
+            border: 1px solid rgba(255, 140, 0, 0.3);
+            background: rgba(15, 23, 42, 0.6);
+            color: white;
+            font-family: 'Outfit', sans-serif;
+            font-size: 1rem;
+        }
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 10px rgba(255, 140, 0, 0.2);
+        }
+        #welcomeMessage {
+            display: none;
+            margin-top: 2rem;
+            padding: 1.5rem;
+            background: rgba(255, 140, 0, 0.1);
+            border: 1px solid var(--primary-color);
+            border-radius: 15px;
+            animation: fadeUp 0.5s ease-out;
+        }
+        .nav-back {
+            position: absolute;
+            top: 2rem;
+            left: 2rem;
+            color: var(--text-muted);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: color 0.3s;
+        }
+        .nav-back:hover {
+            color: var(--primary-color);
+        }
+    </style>
+</head>
+<body>
+    <div class="background-overlay"></div>
+    
+    <a href="index.html" class="nav-back">← Back to Manifesto</a>
+
+    <main class="office-container">
+        <img src="logo.png" alt="MJP Logo" style="width: 100px; margin-bottom: 1rem;">
+        <h1>MJP Headquarters</h1>
+        <p style="color: var(--text-muted); margin-bottom: 2rem;">Register yourself as an official comrade of the Momo Janta Party.</p>
+        
+        <div class="card" id="registrationCard">
+            <form id="partyForm">
+                <div class="form-group">
+                    <label for="comradeName">Full Name</label>
+                    <input type="text" id="comradeName" class="form-control" required placeholder="Enter your name">
+                </div>
+                
+                <div class="form-group">
+                    <label for="momoPref">Preferred Momo Filling</label>
+                    <select id="momoPref" class="form-control" required>
+                        <option value="">Select your filling...</option>
+                        <option value="Veg">Vegetable</option>
+                        <option value="Paneer">Paneer</option>
+                        <option value="Chicken">Chicken</option>
+                        <option value="Pork">Pork</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="chutneySpice">Chutney Spice Level (1-10)</label>
+                    <input type="number" id="chutneySpice" class="form-control" min="1" max="10" value="5" required>
+                </div>
+                
+                <button type="submit" class="btn" style="width: 100%; margin-top: 1rem;">Sign the Register</button>
+            </form>
+        </div>
+
+        <div id="welcomeMessage">
+            <h3 style="color: var(--primary-color); margin-bottom: 0.5rem;">Welcome, Comrade <span id="outName"></span>!</h3>
+            <p>Your official party membership is confirmed. A daily plate of <strong id="outPref"></strong> momos (Spice Level: <strong id="outSpice"></strong>) has been added to your Universal Basic Momo quota.</p>
+        </div>
+    </main>
+
+    <script src="office.js"></script>
+</body>
+</html>
