@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="logo.png" alt="Momo Janta Party Logo" width="200" />
+  <img src="assets/images/logo.png" alt="Momo Janta Party Logo" width="200" />
 
   # 🥟 Momo Janta Party (MJP) 🚩
   ### *"Steaming Ahead to a Better Tomorrow!"*
@@ -20,7 +20,7 @@
 <br>
 
 <div align="center">
-  <img src="manifesto_poster.png" alt="Momo Janta Party Manifesto Cinematic Poster" width="100%" style="border-radius: 15px; box-shadow: 0 10px 30px rgba(255, 140, 0, 0.4);" />
+  <img src="assets/images/manifesto_poster.png" alt="Momo Janta Party Manifesto Cinematic Poster" width="100%" style="border-radius: 15px; box-shadow: 0 10px 30px rgba(255, 140, 0, 0.4);" />
 </div>
 
 ---
@@ -56,11 +56,11 @@ Interactive tools for the modern comrade!
     <tr>
       <td align="center">
         <b>🚨 Tactical Heatmap (Live Mayo Tracking)</b><br>
-        <img src="heatmap_poster.png" alt="Heatmap Poster" width="400" style="border-radius: 15px; box-shadow: 0 5px 15px rgba(255,0,0,0.3);" />
+        <img src="assets/images/heatmap_poster.png" alt="Heatmap Poster" width="400" style="border-radius: 15px; box-shadow: 0 5px 15px rgba(255,0,0,0.3);" />
       </td>
       <td align="center">
         <b>🖼️ MJP Official Propaganda</b><br>
-        <img src="anti_mayo_poster.png" alt="Anti Mayo Propaganda" width="400" style="border-radius: 15px; box-shadow: 0 5px 15px rgba(255,140,0,0.3);" />
+        <img src="assets/images/anti_mayo_poster.png" alt="Anti Mayo Propaganda" width="400" style="border-radius: 15px; box-shadow: 0 5px 15px rgba(255,140,0,0.3);" />
       </td>
     </tr>
   </table>
@@ -89,12 +89,12 @@ The bureaucratic backbone of our great nation. We have decentralized power into 
 ### 🔥 Spotlight: The Department of Baddies Affairs
 Ensuring the nation always slays. Serving aesthetics and state-funded touch-ups.
 <div align="center">
-  <img src="baddies_poster.png" alt="Dept of Baddies Affairs Neon Sign" width="500" style="border-radius: 15px; box-shadow: 0 10px 30px rgba(255, 0, 128, 0.4);" />
+  <img src="assets/images/baddies_poster.png" alt="Dept of Baddies Affairs Neon Sign" width="500" style="border-radius: 15px; box-shadow: 0 10px 30px rgba(255, 0, 128, 0.4);" />
 </div>
 
 ### 🍬 Special Mention: Dept. of Melody Affairs
 <div align="center">
-  <img src="melody_logo.png" alt="Modi Meloni Melody" width="300" style="border-radius: 15px;" />
+  <img src="assets/images/melody_logo.png" alt="Modi Meloni Melody" width="300" style="border-radius: 15px;" />
   <p>Dedicated exclusively to solving the nation's most pressing question: <em>"Melody itni chocolaty kyun hai?"</em></p>
 </div>
 
