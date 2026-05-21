@@ -85,6 +85,7 @@ The bureaucratic backbone of our great nation. We have decentralized power into 
 | 🚀✈️ | **Dept. of Kaveri Engine Fund** | Diverting national momo tax revenues to finally finish the indigenous jet engine project. |
 | 🤬🔥 | **Dept. of PKMB** | Maintaining peak aggression levels in international momo diplomacy. |
 | 🧱👱‍♂️ | **Dept. of Dolund Affairs** | Ensuring our momo walls are YUGE and keeping the mayonnaise eaters out. |
+| 🎧🤐 | **Dept. of Introvert Peoples** | Ensuring the fundamental right to order momos via text message without eye contact. |
 
 ### 🔥 Spotlight: The Department of Baddies Affairs
 Ensuring the nation always slays. Serving aesthetics and state-funded touch-ups.
@@ -133,6 +134,7 @@ graph TD;
     Inclusive --> Feminist[Dept. of Feminist Affairs];
     Inclusive --> Gay[Dept. of Gay Affairs];
     Inclusive --> Lesbian[Dept. of Lesbian Affairs];
+    Inclusive --> Introvert[Dept. of Introvert Peoples];
 ```
 
 ---
