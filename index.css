@@ -250,8 +250,8 @@ footer {
 
 /* Masonry Gallery Layout for Departments */
 .masonry-gallery {
-    column-count: 3;
-    column-gap: 1.5rem;
+    column-count: 2;
+    column-gap: 2rem;
     padding: 1rem;
     margin-top: 2rem;
 }
