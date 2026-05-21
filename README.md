@@ -82,6 +82,8 @@ The bureaucratic backbone of our great nation. We have decentralized power into 
 | 🌈 | **Dept. of Gay Affairs** | Ensuring the momo selection is as colorful and diverse as our people. |
 | 🌶️👩🏽 | **Schezwan Mahila Morcha** | The fiercest women's wing defending the spice tolerance of the nation. |
 | 🪳🔨 | **Dept. of Cockroach Crushing** | Eradicating pests with extreme prejudice to maintain pristine street food hygiene. |
+| 🚀✈️ | **Dept. of Kaveri Engine Fund** | Diverting national momo tax revenues to finally finish the indigenous jet engine project. |
+| 🤬🔥 | **Dept. of PKMB** | Maintaining peak aggression levels in international momo diplomacy. |
 
 ### 🔥 Spotlight: The Department of Baddies Affairs
 Ensuring the nation always slays. Serving aesthetics and state-funded touch-ups.
@@ -108,6 +110,8 @@ graph TD;
     Exec --> Chutney[Dept. of Chutney Affairs];
     Exec --> Morcha[Schezwan Mahila Morcha];
     Exec --> Cockroach[Dept. of Cockroach Crushing];
+    Exec --> Kaveri[Dept. of Kaveri Engine Fund];
+    Exec --> PKMB[Dept. of PKMB];
     
     MinSteam --> Packaging[Bureau of Packaging];
     MinSteam --> Filling[Filling Allocation Board];
