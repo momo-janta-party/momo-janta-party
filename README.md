@@ -81,6 +81,7 @@ The bureaucratic backbone of our great nation. We have decentralized power into 
 | 👩‍❤️‍👩 | **Dept. of Lesbian Affairs** | Fostering inclusivity and guaranteeing love and momo-sharing are universal rights. |
 | 🌈 | **Dept. of Gay Affairs** | Ensuring the momo selection is as colorful and diverse as our people. |
 | 🌶️👩🏽 | **Schezwan Mahila Morcha** | The fiercest women's wing defending the spice tolerance of the nation. |
+| 🪳🔨 | **Dept. of Cockroach Crushing** | Eradicating pests with extreme prejudice to maintain pristine street food hygiene. |
 
 ### 🔥 Spotlight: The Department of Baddies Affairs
 Ensuring the nation always slays. Serving aesthetics and state-funded touch-ups.
@@ -106,6 +107,7 @@ graph TD;
     Exec --> MinSteam[Ministry of Steaming];
     Exec --> Chutney[Dept. of Chutney Affairs];
     Exec --> Morcha[Schezwan Mahila Morcha];
+    Exec --> Cockroach[Dept. of Cockroach Crushing];
     
     MinSteam --> Packaging[Bureau of Packaging];
     MinSteam --> Filling[Filling Allocation Board];
