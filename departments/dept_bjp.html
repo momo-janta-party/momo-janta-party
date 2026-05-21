@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dept. of BJP Kands - MJP</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;500;800&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../index.css">
+</head>
+<body>
+    <div class="background-overlay"></div>
+    
+    <div class="nav-bar" style="position: absolute; top: 2rem; left: 2rem; display: flex; gap: 1.5rem;">
+        <a href="../departments.html" class="nav-link" style="color: var(--text-muted); text-decoration: none; font-weight: 500;">← Back to Departments</a>
+    </div>
+
+    <main class="manifesto-container" style="margin-top: 5rem; text-align: center;">
+        <div style="font-size: 5rem; margin-bottom: 1rem;">🪷💸</div>
+        <h1>Dept. of BJP Kands</h1>
+        <p style="color: var(--text-muted); font-size: 1.25rem; max-width: 600px; margin: 0 auto 3rem;">Tracking the masterstrokes that went a little too far. Washing machines available for rent.</p>
+
+        <div class="grid" style="display: flex; justify-content: center; gap: 2rem; max-width: 800px; margin: 0 auto;">
+            <div class="card" style="flex: 1;">
+                <h3 style="color: var(--primary-color);">Chief Investigator</h3>
+                <p style="font-size: 1.5rem; font-weight: 500; margin-top: 1rem;">[Assign Head Here]</p>
+            </div>
+            <div class="card" style="flex: 1; cursor: pointer; border: 1px solid red;" id="reveal-btn-bjp">
+                <h3 style="color: red;">🚨 Reveal Secret File</h3>
+                <p style="font-size: 1rem; font-weight: 500; margin-top: 1rem;" id="kand-text-bjp">Click to declassify</p>
+            </div>
+        </div>
+
+        <div style="margin-top: 4rem; text-align: left;">
+            <h2 style="color: var(--primary-color); text-align: center; margin-bottom: 2rem;">📸 Evidence Gallery</h2>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem;">
+                <div style="height: 150px; background: rgba(255,140,0,0.1); border: 1px dashed var(--primary-color); border-radius: 10px; display: flex; align-items: center; justify-content: center; color: var(--text-muted);">+ Add Photo</div>
+                <div style="height: 150px; background: rgba(255,140,0,0.1); border: 1px dashed var(--primary-color); border-radius: 10px; display: flex; align-items: center; justify-content: center; color: var(--text-muted);">+ Add Photo</div>
+            </div>
+        </div>
+    </main>
+    <script src="../assets/js/kands.js"></script>
+</body>
+</html>

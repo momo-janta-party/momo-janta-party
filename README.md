@@ -114,6 +114,10 @@ graph TD;
     Exec --> Kaveri[Dept. of Kaveri Engine Fund];
     Exec --> PKMB[Dept. of PKMB];
     Exec --> Dolund[Dept. of Dolund Affairs];
+    Exec --> Congress[Dept. of Congress Kands];
+    Exec --> Bjp[Dept. of BJP Kands];
+    Exec --> Aap[Dept. of AAP Kands];
+    Exec --> Pappu[Dept. of Pappu Affairs];
     
     MinSteam --> Packaging[Bureau of Packaging];
     MinSteam --> Filling[Filling Allocation Board];
