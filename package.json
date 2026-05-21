@@ -1,8 +1,5 @@
 {
   "name": "momo-janta-party",
   "version": "1.0.0",
-  "description": "Official Website of the Momo Janta Party",
-  "scripts": {
-    "build": "npx typescript tsc office.ts portal.ts || true"
-  }
+  "description": "Official Website of the Momo Janta Party"
 }
