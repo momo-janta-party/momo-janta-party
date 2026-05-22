@@ -83,12 +83,39 @@
             </div>
         </section>
 
-        <!-- Graph 4: Dynamic Popularity Graph (Live GitHub Data) -->
-        <section class="graph-container" style="border-color: #ffaa00;" id="popularity-graph">
-            <h2>⭐ Momograph Popularity</h2>
-            <p>Live public support metrics pulled dynamically from the GitHub Mainframe.</p>
+        <!-- Graph 4: GitHub Stars (Live Data) -->
+        <section class="graph-container" style="border-color: #ffaa00;" id="stars-graph">
+            <h2>⭐ Public Approval (GitHub Stars)</h2>
+            <p>Live star count pulled dynamically from the GitHub Mainframe.</p>
             <div class="canvas-wrapper">
-                <canvas id="popularityChart"></canvas>
+                <canvas id="starsChart"></canvas>
+            </div>
+        </section>
+
+        <!-- Graph 5: GitHub Forks (Live Data) -->
+        <section class="graph-container" style="border-color: #00ffcc;" id="forks-graph">
+            <h2>🔱 Regional Chapters (GitHub Forks)</h2>
+            <p>Live fork count pulled dynamically from the GitHub Mainframe.</p>
+            <div class="canvas-wrapper">
+                <canvas id="forksChart"></canvas>
+            </div>
+        </section>
+
+        <!-- Graph 6: Pending Momos (Live Data) -->
+        <section class="graph-container" style="border-color: #ff4444;" id="issues-graph">
+            <h2>📝 Pending Momos (GitHub Issues)</h2>
+            <p>Orders currently being taken by the IT Cell.</p>
+            <div class="canvas-wrapper">
+                <canvas id="issuesChart"></canvas>
+            </div>
+        </section>
+
+        <!-- Graph 7: Dishes Cooked (Live Data) -->
+        <section class="graph-container" style="border-color: #ff00ff;" id="prs-graph">
+            <h2>🍳 Dishes Cooked (Merged PRs)</h2>
+            <p>Successfully steamed and delivered features to the citizens.</p>
+            <div class="canvas-wrapper">
+                <canvas id="prsChart"></canvas>
             </div>
         </section>
 
@@ -132,9 +159,7 @@
                     x: { grid: { color: gridColor } },
                     y: { grid: { color: gridColor }, beginAtZero: true }
                 },
-                plugins: {
-                    legend: { display: false }
-                }
+                plugins: { legend: { display: false } }
             }
         });
 
@@ -155,9 +180,7 @@
                 responsive: true,
                 maintainAspectRatio: false,
                 cutout: '70%',
-                plugins: {
-                    legend: { position: 'bottom' }
-                }
+                plugins: { legend: { position: 'bottom' } }
             }
         });
 
@@ -187,62 +210,71 @@
                     x: { grid: { color: gridColor }, max: 100, beginAtZero: true },
                     y: { grid: { display: false } }
                 },
-                plugins: {
-                    legend: { display: false }
-                }
+                plugins: { legend: { display: false } }
             }
         });
 
-        // 4. Dynamic Popularity Graph (Live GitHub Data)
-        async function renderPopularityChart() {
+        // 4. Dynamic GitHub Graphs (Stars, Forks, Issues, Merged PRs)
+        async function renderGitHubCharts() {
             let stars = 15; // default fallback
             let forks = 5;  // default fallback
+            let issues = 22; // default fallback (pending momos)
+            let mergedPRs = 18; // default fallback (dishes cooked)
             
             try {
-                const res = await fetch('https://api.github.com/repos/momo-janta-party/momo-janta-party');
-                if (res.ok) {
-                    const repo = await res.json();
+                // Fetch basic repo stats
+                const repoRes = await fetch('https://api.github.com/repos/momo-janta-party/momo-janta-party');
+                if (repoRes.ok) {
+                    const repo = await repoRes.json();
                     stars = repo.stargazers_count;
                     forks = repo.forks_count;
+                    issues = repo.open_issues_count;
+                }
+                
+                // Fetch merged PRs via Search API
+                const searchRes = await fetch('https://api.github.com/search/issues?q=repo:momo-janta-party/momo-janta-party+is:pr+is:merged');
+                if (searchRes.ok) {
+                    const searchData = await searchRes.json();
+                    mergedPRs = searchData.total_count;
                 }
             } catch (err) {
                 console.error("Could not fetch GitHub data for graph", err);
             }
 
-            const popGraphCtx = document.getElementById('popularityChart').getContext('2d');
-            new Chart(popGraphCtx, {
-                type: 'bar',
-                data: {
-                    labels: ['GitHub Stars', 'GitHub Forks'],
-                    datasets: [{
-                        label: 'Count',
-                        data: [stars, forks],
-                        backgroundColor: ['#ffaa00', '#00ffcc'],
-                        borderRadius: 8,
-                        barThickness: 60
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    scales: {
-                        x: { grid: { display: false } },
-                        y: { grid: { color: gridColor }, beginAtZero: true }
+            // Create Bar Chart helper
+            function createBarChart(canvasId, label, dataValue, color) {
+                const ctx = document.getElementById(canvasId).getContext('2d');
+                new Chart(ctx, {
+                    type: 'bar',
+                    data: {
+                        labels: [label],
+                        datasets: [{
+                            label: 'Count',
+                            data: [dataValue],
+                            backgroundColor: [color],
+                            borderRadius: 8,
+                            barThickness: 80
+                        }]
                     },
-                    plugins: {
-                        legend: { display: false },
-                        tooltip: {
-                            callbacks: {
-                                label: function(context) {
-                                    return context.parsed.y + (context.dataIndex === 0 ? ' Stars' : ' Forks');
-                                }
-                            }
-                        }
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        scales: {
+                            x: { grid: { display: false } },
+                            y: { grid: { color: gridColor }, beginAtZero: true }
+                        },
+                        plugins: { legend: { display: false } }
                     }
-                }
-            });
+                });
+            }
+
+            // Render all 4 graphs
+            createBarChart('starsChart', 'GitHub Stars', stars, '#ffaa00');
+            createBarChart('forksChart', 'GitHub Forks', forks, '#00ffcc');
+            createBarChart('issuesChart', 'Pending Momos (Issues)', issues, '#ff4444');
+            createBarChart('prsChart', 'Dishes Cooked (Merged PRs)', mergedPRs, '#ff00ff');
         }
-        renderPopularityChart();
+        renderGitHubCharts();
     </script>
 </body>
 </html>
