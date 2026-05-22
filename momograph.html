@@ -7,6 +7,38 @@
     <meta name="description" content="National Statistics and Momographs for the Momo Janta Party.">
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;500;800&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="index.css">
+    <!-- Include Chart.js for actual graphs -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        .graph-container {
+            background: rgba(0, 0, 0, 0.4);
+            border: 1px solid var(--primary-color);
+            border-radius: 15px;
+            padding: 2rem;
+            margin-bottom: 3rem;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+        .graph-container h2 {
+            text-align: center;
+            margin-bottom: 0.5rem;
+            font-family: 'Playfair Display', serif;
+        }
+        .graph-container p {
+            text-align: center;
+            color: var(--text-muted);
+            margin-bottom: 2rem;
+        }
+        .canvas-wrapper {
+            position: relative;
+            height: 400px;
+            width: 100%;
+        }
+        /* Specific height for doughnut */
+        .doughnut-wrapper {
+            height: 350px;
+        }
+    </style>
 </head>
 <body>
     <div class="background-overlay"></div>
@@ -16,7 +48,7 @@
             <h1 style="font-size: 4.5rem; margin-bottom: 1rem;">📊 The Momograph</h1>
             <p class="tagline">National Statistics & Analytics</p>
             <p style="color: var(--text-muted); max-width: 700px; margin: 1.5rem auto; font-size: 1.1rem; line-height: 1.6;">
-                Real-time analytics of our nation's steam-powered progress. (Currently displaying random historical data until the web-search module is integrated).
+                Visualizing the undeniable rise of the Momo Janta Party through actual data graphs.
             </p>
             <a href="index.html" class="btn btn-outline" style="margin-top: 1.5rem; border-color: rgba(255,255,255,0.3); color: white;">← Return to HQ</a>
         </div>
@@ -24,130 +56,39 @@
 
     <main class="manifesto-container" style="max-width: 1000px; padding-top: 2rem;">
         
-        <section class="momograph card" style="background: rgba(0, 0, 0, 0.4); border: 1px solid var(--primary-color); margin-bottom: 3rem;">
-            <h2>📈 Population Metrics</h2>
-            <p style="color: var(--text-muted); margin-bottom: 2rem;">Total number of people affiliated with the party across regions.</p>
-            
-            <div style="margin-bottom: 2rem;">
-                <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
-                    <span>Northern Provinces (Registered Citizens)</span>
-                    <span style="color: var(--primary-color); font-weight: bold;">4.5 Million</span>
-                </div>
-                <div style="width: 100%; background: rgba(255,255,255,0.1); border-radius: 10px; height: 16px; overflow: hidden;">
-                    <div style="width: 85%; background: var(--primary-color); height: 100%; border-radius: 10px;"></div>
-                </div>
-            </div>
-
-            <div style="margin-bottom: 2rem;">
-                <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
-                    <span>Southern Territories (Registered Citizens)</span>
-                    <span style="color: #00ffcc; font-weight: bold;">3.2 Million</span>
-                </div>
-                <div style="width: 100%; background: rgba(255,255,255,0.1); border-radius: 10px; height: 16px; overflow: hidden;">
-                    <div style="width: 60%; background: #00ffcc; height: 100%; border-radius: 10px;"></div>
-                </div>
-            </div>
-            
-            <div style="margin-bottom: 2rem;">
-                <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
-                    <span>Eastern & Western Sectors (Registered Citizens)</span>
-                    <span style="color: #ffaa00; font-weight: bold;">6.8 Million</span>
-                </div>
-                <div style="width: 100%; background: rgba(255,255,255,0.1); border-radius: 10px; height: 16px; overflow: hidden;">
-                    <div style="width: 95%; background: #ffaa00; height: 100%; border-radius: 10px;"></div>
-                </div>
+        <!-- Graph 1: Population Growth (Line Chart) -->
+        <section class="graph-container">
+            <h2>📈 Population Growth</h2>
+            <p>Millions of citizens sworn to the party over the last 6 months.</p>
+            <div class="canvas-wrapper">
+                <canvas id="populationChart"></canvas>
             </div>
         </section>
 
-        <section class="momograph card" style="background: rgba(0, 0, 0, 0.4); border: 1px solid #ff00ff; margin-bottom: 3rem;">
-            <h2>🌶️ Chutney Logistics & Consumption</h2>
-            <p style="color: var(--text-muted); margin-bottom: 2rem;">Tracking the national reserve of spicy red chutney and mayo eradication.</p>
-
-            <div style="margin-bottom: 2rem;">
-                <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
-                    <span>Mayo Eradication Progress</span>
-                    <span style="color: #ff00ff; font-weight: bold;">65%</span>
-                </div>
-                <div style="width: 100%; background: rgba(255,255,255,0.1); border-radius: 10px; height: 16px; overflow: hidden;">
-                    <div style="width: 65%; background: linear-gradient(90deg, #ff00ff, #ff0055); height: 100%; border-radius: 10px;"></div>
-                </div>
-            </div>
-
-            <div style="margin-bottom: 2rem;">
-                <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
-                    <span>Spicy Chutney Reserves</span>
-                    <span style="color: #ff4444; font-weight: bold;">120% (Overflowing)</span>
-                </div>
-                <div style="width: 100%; background: rgba(255,255,255,0.1); border-radius: 10px; height: 16px; overflow: hidden;">
-                    <div style="width: 100%; background: #ff4444; height: 100%; border-radius: 10px; box-shadow: 0 0 10px #ff4444;"></div>
-                </div>
-            </div>
-        </section>
-        
-        <section class="momograph card" style="background: rgba(0, 0, 0, 0.4); border: 1px solid #00ffcc; margin-bottom: 3rem;">
+        <!-- Graph 2: Momo Preferences (Doughnut Chart) -->
+        <section class="graph-container" style="border-color: #00ffcc;">
             <h2>🥟 Momo Preference Breakdown</h2>
-            <p style="color: var(--text-muted); margin-bottom: 2rem;">What the citizens are actually eating.</p>
-            
-            <div style="margin-bottom: 2rem;">
-                <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
-                    <span>Fried vs Steamed vs Kurkure Ratio</span>
-                    <span style="color: #fff; font-weight: bold;">Steamed 60% | Fried 25% | Kurkure 15%</span>
-                </div>
-                <div style="width: 100%; background: rgba(255,255,255,0.1); border-radius: 10px; height: 16px; overflow: hidden; display: flex;">
-                    <div style="width: 60%; background: #00ffcc; height: 100%;"></div>
-                    <div style="width: 25%; background: #ffaa00; height: 100%;"></div>
-                    <div style="width: 15%; background: #ff00ff; height: 100%;"></div>
-                </div>
+            <p>National survey of preferred momo styles.</p>
+            <div class="canvas-wrapper doughnut-wrapper">
+                <canvas id="preferenceChart"></canvas>
             </div>
         </section>
 
-        <section class="momograph card" style="background: rgba(0, 0, 0, 0.4); border: 1px solid var(--primary-color); margin-bottom: 3rem;">
-            <h2>⏱️ Infrastructure Timelines</h2>
-            <p style="color: var(--text-muted); margin-bottom: 2rem;">Current party infrastructure deployment milestones.</p>
-            
-            <div style="margin-bottom: 2rem;">
-                <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
-                    <span>Nationwide Chutney Pipeline (Phase 1)</span>
-                    <span style="color: var(--primary-color); font-weight: bold;">In Progress (45%)</span>
-                </div>
-                <div style="width: 100%; background: rgba(255,255,255,0.1); border-radius: 10px; height: 16px; overflow: hidden;">
-                    <div style="width: 45%; background: var(--primary-color); height: 100%; border-radius: 10px; box-shadow: 0 0 10px var(--primary-color);"></div>
-                </div>
-            </div>
-            
-            <div style="margin-bottom: 2rem;">
-                <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
-                    <span>Universal Basic Momo (UBM) Rollout</span>
-                    <span style="color: #00ffcc; font-weight: bold;">Early Testing (12%)</span>
-                </div>
-                <div style="width: 100%; background: rgba(255,255,255,0.1); border-radius: 10px; height: 16px; overflow: hidden;">
-                    <div style="width: 12%; background: #00ffcc; height: 100%; border-radius: 10px;"></div>
-                </div>
+        <!-- Graph 3: Infrastructure Timelines (Bar Chart) -->
+        <section class="graph-container" style="border-color: #ff00ff;">
+            <h2>⏱️ Infrastructure Milestones</h2>
+            <p>Completion percentage of major national projects.</p>
+            <div class="canvas-wrapper">
+                <canvas id="infrastructureChart"></canvas>
             </div>
         </section>
 
-        <section class="momograph card" style="background: rgba(0, 0, 0, 0.4); border: 1px solid #ffaa00; margin-bottom: 3rem;" id="popularity-graph">
+        <!-- Graph 4: Dynamic Popularity Graph (Live GitHub Data) -->
+        <section class="graph-container" style="border-color: #ffaa00;" id="popularity-graph">
             <h2>⭐ Momograph Popularity</h2>
-            <p style="color: var(--text-muted); margin-bottom: 2rem;">Live public support metrics directly from the GitHub mainframe.</p>
-            
-            <div style="margin-bottom: 2rem;">
-                <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
-                    <span>GitHub Stars (Public Approval Rating)</span>
-                    <span id="star-count" style="color: #ffaa00; font-weight: bold; font-size: 1.2rem;">Loading...</span>
-                </div>
-                <div style="width: 100%; background: rgba(255,255,255,0.1); border-radius: 10px; height: 16px; overflow: hidden;">
-                    <div id="star-bar" style="width: 0%; background: #ffaa00; height: 100%; border-radius: 10px; box-shadow: 0 0 10px #ffaa00; transition: width 2s ease;"></div>
-                </div>
-            </div>
-            
-            <div style="margin-bottom: 2rem;">
-                <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
-                    <span>GitHub Forks (Regional Chapters Created)</span>
-                    <span id="fork-count" style="color: #00ffcc; font-weight: bold; font-size: 1.2rem;">Loading...</span>
-                </div>
-                <div style="width: 100%; background: rgba(255,255,255,0.1); border-radius: 10px; height: 16px; overflow: hidden;">
-                    <div id="fork-bar" style="width: 0%; background: #00ffcc; height: 100%; border-radius: 10px; transition: width 2s ease;"></div>
-                </div>
+            <p>Live public support metrics pulled dynamically from the GitHub Mainframe.</p>
+            <div class="canvas-wrapper">
+                <canvas id="popularityChart"></canvas>
             </div>
         </section>
 
@@ -161,36 +102,147 @@
     </footer>
 
     <script>
-        // Fetch Live Popularity Data
-        async function fetchPopularity() {
+        // Common Chart Defaults for Dark Theme
+        Chart.defaults.color = '#cccccc';
+        Chart.defaults.font.family = "'Outfit', sans-serif";
+        const gridColor = 'rgba(255, 255, 255, 0.1)';
+
+        // 1. Population Growth (Line Chart)
+        const popCtx = document.getElementById('populationChart').getContext('2d');
+        new Chart(popCtx, {
+            type: 'line',
+            data: {
+                labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+                datasets: [{
+                    label: 'Registered Citizens (Millions)',
+                    data: [1.2, 2.5, 4.8, 8.1, 12.5, 18.0],
+                    borderColor: '#ff8c00', // primary color
+                    backgroundColor: 'rgba(255, 140, 0, 0.2)',
+                    borderWidth: 3,
+                    tension: 0.4,
+                    fill: true,
+                    pointBackgroundColor: '#fff',
+                    pointRadius: 5
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    x: { grid: { color: gridColor } },
+                    y: { grid: { color: gridColor }, beginAtZero: true }
+                },
+                plugins: {
+                    legend: { display: false }
+                }
+            }
+        });
+
+        // 2. Momo Preferences (Doughnut Chart)
+        const prefCtx = document.getElementById('preferenceChart').getContext('2d');
+        new Chart(prefCtx, {
+            type: 'doughnut',
+            data: {
+                labels: ['Steamed', 'Fried', 'Kurkure', 'Tandoori'],
+                datasets: [{
+                    data: [55, 25, 15, 5],
+                    backgroundColor: ['#00ffcc', '#ffaa00', '#ff00ff', '#ff4444'],
+                    borderWidth: 0,
+                    hoverOffset: 10
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                cutout: '70%',
+                plugins: {
+                    legend: { position: 'bottom' }
+                }
+            }
+        });
+
+        // 3. Infrastructure Milestones (Horizontal Bar Chart)
+        const infraCtx = document.getElementById('infrastructureChart').getContext('2d');
+        new Chart(infraCtx, {
+            type: 'bar',
+            data: {
+                labels: ['Chutney Pipeline', 'Mayo Eradication', 'UBM Rollout', 'Steaming Corridors'],
+                datasets: [{
+                    label: 'Completion %',
+                    data: [45, 65, 12, 85],
+                    backgroundColor: [
+                        'rgba(255, 140, 0, 0.8)',
+                        'rgba(255, 0, 255, 0.8)',
+                        'rgba(0, 255, 204, 0.8)',
+                        'rgba(255, 170, 0, 0.8)'
+                    ],
+                    borderRadius: 5
+                }]
+            },
+            options: {
+                indexAxis: 'y', // Horizontal bar chart
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    x: { grid: { color: gridColor }, max: 100, beginAtZero: true },
+                    y: { grid: { display: false } }
+                },
+                plugins: {
+                    legend: { display: false }
+                }
+            }
+        });
+
+        // 4. Dynamic Popularity Graph (Live GitHub Data)
+        async function renderPopularityChart() {
+            let stars = 15; // default fallback
+            let forks = 5;  // default fallback
+            
             try {
                 const res = await fetch('https://api.github.com/repos/momo-janta-party/momo-janta-party');
-                if (!res.ok) throw new Error('API Error');
-                const repo = await res.json();
-                
-                const stars = repo.stargazers_count;
-                const forks = repo.forks_count;
-                
-                document.getElementById('star-count').innerText = stars + ' Stars';
-                document.getElementById('fork-count').innerText = forks + ' Forks';
-                
-                // Visual graph logic (arbitrary scaling for dramatic effect)
-                const starPercent = Math.min(100, (stars / 50) * 100); 
-                const forkPercent = Math.min(100, (forks / 20) * 100);
-                
-                setTimeout(() => {
-                    document.getElementById('star-bar').style.width = Math.max(5, starPercent) + '%';
-                    document.getElementById('fork-bar').style.width = Math.max(5, forkPercent) + '%';
-                }, 100);
+                if (res.ok) {
+                    const repo = await res.json();
+                    stars = repo.stargazers_count;
+                    forks = repo.forks_count;
+                }
             } catch (err) {
-                console.error(err);
-                document.getElementById('star-count').innerText = '10+ Stars (Estimated)';
-                document.getElementById('fork-count').innerText = '5+ Forks (Estimated)';
-                document.getElementById('star-bar').style.width = '20%';
-                document.getElementById('fork-bar').style.width = '10%';
+                console.error("Could not fetch GitHub data for graph", err);
             }
+
+            const popGraphCtx = document.getElementById('popularityChart').getContext('2d');
+            new Chart(popGraphCtx, {
+                type: 'bar',
+                data: {
+                    labels: ['GitHub Stars', 'GitHub Forks'],
+                    datasets: [{
+                        label: 'Count',
+                        data: [stars, forks],
+                        backgroundColor: ['#ffaa00', '#00ffcc'],
+                        borderRadius: 8,
+                        barThickness: 60
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        x: { grid: { display: false } },
+                        y: { grid: { color: gridColor }, beginAtZero: true }
+                    },
+                    plugins: {
+                        legend: { display: false },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    return context.parsed.y + (context.dataIndex === 0 ? ' Stars' : ' Forks');
+                                }
+                            }
+                        }
+                    }
+                }
+            });
         }
-        fetchPopularity();
+        renderPopularityChart();
     </script>
 </body>
 </html>
