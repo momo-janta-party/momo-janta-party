@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MJP Contributors - Momo Janta Party</title>
+    <meta name="description" content="The official list of glorious contributors who built the Momo Janta Party platform.">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;500;800&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="index.css">
+    <style>
+        .contributors-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2.5rem;
+            margin-top: 2rem;
+        }
+        .contributor-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 140, 0, 0.2);
+            border-radius: 20px;
+            padding: 2.5rem 2rem;
+            text-align: center;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            backdrop-filter: blur(10px);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .contributor-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-color), #ff00ff);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+        .contributor-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--primary-color);
+            box-shadow: 0 15px 40px rgba(255, 140, 0, 0.2);
+            background: rgba(255, 255, 255, 0.05);
+        }
+        .contributor-card:hover::before {
+            opacity: 1;
+        }
+        .contributor-avatar {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            border: 3px solid var(--primary-color);
+            margin-bottom: 1.5rem;
+            object-fit: cover;
+            box-shadow: 0 0 20px rgba(255, 140, 0, 0.3);
+            transition: transform 0.3s ease;
+        }
+        .contributor-card:hover .contributor-avatar {
+            transform: scale(1.05);
+        }
+        .contributor-name {
+            font-size: 1.8rem;
+            color: var(--text-color);
+            margin-bottom: 0.5rem;
+            font-family: 'Playfair Display', serif;
+        }
+        .contributor-stats {
+            color: var(--primary-color);
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            font-size: 1rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+        .contributor-work {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-bottom: 2rem;
+            line-height: 1.6;
+            flex-grow: 1;
+            text-align: left;
+            background: rgba(0,0,0,0.2);
+            padding: 1rem;
+            border-radius: 10px;
+            width: 100%;
+        }
+        .loading-text {
+            text-align: center;
+            color: var(--primary-color);
+            font-size: 1.4rem;
+            margin: 4rem 0;
+            animation: pulse 1.5s infinite;
+            font-weight: 500;
+        }
+        @keyframes pulse {
+            0% { opacity: 0.5; transform: scale(0.98); }
+            50% { opacity: 1; transform: scale(1.02); }
+            100% { opacity: 0.5; transform: scale(0.98); }
+        }
+        .badge {
+            position: absolute;
+            top: 15px;
+            right: -35px;
+            background: var(--primary-color);
+            color: #fff;
+            padding: 5px 40px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            transform: rotate(45deg);
+            text-transform: uppercase;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+    </style>
+</head>
+<body>
+    <div class="background-overlay"></div>
+    
+    <header class="hero" style="min-height: 35vh; padding-top: 5rem; padding-bottom: 2rem;">
+        <div class="hero-content">
+            <h1 style="font-size: 4.5rem; margin-bottom: 1rem;">The Architects</h1>
+            <p class="tagline">Official List of MJP Contributors</p>
+            <p style="color: var(--text-muted); max-width: 700px; margin: 1.5rem auto; font-size: 1.1rem; line-height: 1.6;">
+                These are the glorious comrades whose keystrokes forged the Momo Janta Party platform. 
+                This hall of fame is <strong style="color: var(--primary-color);">dynamically synchronized</strong> with the GitHub mainframe—automatically updating as new contributions are merged!
+            </p>
+            <a href="index.html" class="btn btn-outline" style="margin-top: 1.5rem; border-color: rgba(255,255,255,0.3); color: white;">← Return to HQ</a>
+        </div>
+    </header>
+
+    <main class="manifesto-container" style="max-width: 1200px; padding-top: 0;">
+        <div id="loading" class="loading-text">
+            📡 Establishing secure uplink to GitHub Mainframe...<br>
+            <span style="font-size: 0.9rem; color: var(--text-muted); display: block; margin-top: 10px;">Decrypting contributor data...</span>
+        </div>
+        <div id="contributors-container" class="contributors-grid"></div>
+    </main>
+
+    <footer style="margin-top: 4rem; text-align: center; padding: 2rem; border-top: 1px solid rgba(255,140,0,0.2);">
+        <p style="color: var(--text-muted); font-size: 0.9rem;">
+            Built with 🥟 by <a href="https://github.com/divyansh-rawat" target="_blank" style="color: var(--primary-color); text-decoration: none; font-weight: bold;">@divyansh-rawat</a> | 
+            <a href="https://github.com/momo-janta-party/momo-janta-party" target="_blank" style="color: var(--text-muted); text-decoration: underline;">View Repository on GitHub</a>
+        </p>
+    </footer>
+
+    <script>
+        const REPO = 'momo-janta-party/momo-janta-party';
+        
+        async function fetchContributors() {
+            try {
+                // Fetch contributors
+                const res = await fetch(`https://api.github.com/repos/${REPO}/contributors`);
+                if (!res.ok) throw new Error('Network response was not ok');
+                const contributors = await res.json();
+                
+                const container = document.getElementById('contributors-container');
+                const loading = document.getElementById('loading');
+                
+                container.innerHTML = '';
+                
+                let index = 0;
+                for (const user of contributors) {
+                    if (user.type !== 'User') continue; // Skip bots if any
+                    index++;
+                    
+                    // Fetch their latest commits to show their work
+                    let workDescription = 'Working hard behind the scenes to steam the nation forward.';
+                    try {
+                        const commitRes = await fetch(`https://api.github.com/repos/${REPO}/commits?author=${user.login}&per_page=3`);
+                        if (commitRes.ok) {
+                            const commits = await commitRes.json();
+                            if (commits.length > 0) {
+                                const commitMessages = commits.map(c => {
+                                    // Clean up commit message: split by newline and remove prefix like "feat:" or "fix:" if desired, 
+                                    // but showing the exact commit is also nice for developers.
+                                    let msg = c.commit.message.split('\\n')[0];
+                                    if(msg.length > 60) msg = msg.substring(0, 57) + '...';
+                                    return msg;
+                                });
+                                workDescription = '<strong style="color: #fff; display: block; margin-bottom: 8px;">Recent Architectural Work:</strong><ul style="margin:0; padding-left: 20px;">' + 
+                                                  commitMessages.map(m => \`<li style="margin-bottom: 5px;">\${m}</li>\`).join('') + 
+                                                  '</ul>';
+                            }
+                        }
+                    } catch (e) {
+                        console.error('Could not fetch commits for', user.login);
+                    }
+
+                    const badgeHtml = index === 1 ? '<div class="badge">MVP</div>' : '';
+
+                    const card = document.createElement('div');
+                    card.className = 'contributor-card';
+                    // Stagger animation delay
+                    card.style.animation = \`fadeInUp 0.6s ease \${index * 0.1}s forwards\`;
+                    card.style.opacity = '0';
+                    card.style.transform = 'translateY(20px)';
+                    
+                    card.innerHTML = \`
+                        \${badgeHtml}
+                        <img src="\${user.avatar_url}" alt="\${user.login}" class="contributor-avatar">
+                        <h3 class="contributor-name">\${user.login}</h3>
+                        <div class="contributor-stats">🥟 \${user.contributions} Commits to the Party</div>
+                        <div class="contributor-work">\${workDescription}</div>
+                        <a href="\${user.html_url}" target="_blank" class="btn btn-outline" style="width: 100%; box-sizing: border-box; text-align: center; padding: 0.8rem; font-size: 0.95rem; border-color: rgba(255,140,0,0.5);">View GitHub Profile</a>
+                    \`;
+                    container.appendChild(card);
+                }
+                
+                loading.style.display = 'none';
+                
+                // Add keyframes for staggered animation dynamically
+                const styleSheet = document.createElement("style");
+                styleSheet.innerText = \`
+                    @keyframes fadeInUp {
+                        to {
+                            opacity: 1;
+                            transform: translateY(0);
+                        }
+                    }
+                \`;
+                document.head.appendChild(styleSheet);
+                
+            } catch (error) {
+                console.error('Error fetching contributors:', error);
+                document.getElementById('loading').innerHTML = '⚠️ Critical failure: Unable to breach GitHub servers.<br><span style="font-size:1rem; color: #ff4444;">Please try again later.</span>';
+            }
+        }
+
+        fetchContributors();
+    </script>
+</body>
+</html>
