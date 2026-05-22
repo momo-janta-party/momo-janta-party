@@ -126,6 +126,31 @@
             </div>
         </section>
 
+        <section class="momograph card" style="background: rgba(0, 0, 0, 0.4); border: 1px solid #ffaa00; margin-bottom: 3rem;" id="popularity-graph">
+            <h2>⭐ Momograph Popularity</h2>
+            <p style="color: var(--text-muted); margin-bottom: 2rem;">Live public support metrics directly from the GitHub mainframe.</p>
+            
+            <div style="margin-bottom: 2rem;">
+                <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                    <span>GitHub Stars (Public Approval Rating)</span>
+                    <span id="star-count" style="color: #ffaa00; font-weight: bold; font-size: 1.2rem;">Loading...</span>
+                </div>
+                <div style="width: 100%; background: rgba(255,255,255,0.1); border-radius: 10px; height: 16px; overflow: hidden;">
+                    <div id="star-bar" style="width: 0%; background: #ffaa00; height: 100%; border-radius: 10px; box-shadow: 0 0 10px #ffaa00; transition: width 2s ease;"></div>
+                </div>
+            </div>
+            
+            <div style="margin-bottom: 2rem;">
+                <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                    <span>GitHub Forks (Regional Chapters Created)</span>
+                    <span id="fork-count" style="color: #00ffcc; font-weight: bold; font-size: 1.2rem;">Loading...</span>
+                </div>
+                <div style="width: 100%; background: rgba(255,255,255,0.1); border-radius: 10px; height: 16px; overflow: hidden;">
+                    <div id="fork-bar" style="width: 0%; background: #00ffcc; height: 100%; border-radius: 10px; transition: width 2s ease;"></div>
+                </div>
+            </div>
+        </section>
+
     </main>
 
     <footer style="margin-top: 4rem; text-align: center; padding: 2rem; border-top: 1px solid rgba(255,140,0,0.2);">
@@ -134,5 +159,38 @@
             <a href="https://github.com/momo-janta-party/momo-janta-party" target="_blank" style="color: var(--text-muted); text-decoration: underline;">View Repository on GitHub</a>
         </p>
     </footer>
+
+    <script>
+        // Fetch Live Popularity Data
+        async function fetchPopularity() {
+            try {
+                const res = await fetch('https://api.github.com/repos/momo-janta-party/momo-janta-party');
+                if (!res.ok) throw new Error('API Error');
+                const repo = await res.json();
+                
+                const stars = repo.stargazers_count;
+                const forks = repo.forks_count;
+                
+                document.getElementById('star-count').innerText = stars + ' Stars';
+                document.getElementById('fork-count').innerText = forks + ' Forks';
+                
+                // Visual graph logic (arbitrary scaling for dramatic effect)
+                const starPercent = Math.min(100, (stars / 50) * 100); 
+                const forkPercent = Math.min(100, (forks / 20) * 100);
+                
+                setTimeout(() => {
+                    document.getElementById('star-bar').style.width = Math.max(5, starPercent) + '%';
+                    document.getElementById('fork-bar').style.width = Math.max(5, forkPercent) + '%';
+                }, 100);
+            } catch (err) {
+                console.error(err);
+                document.getElementById('star-count').innerText = '10+ Stars (Estimated)';
+                document.getElementById('fork-count').innerText = '5+ Forks (Estimated)';
+                document.getElementById('star-bar').style.width = '20%';
+                document.getElementById('fork-bar').style.width = '10%';
+            }
+        }
+        fetchPopularity();
+    </script>
 </body>
 </html>
