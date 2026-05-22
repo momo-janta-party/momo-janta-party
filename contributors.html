@@ -149,50 +149,37 @@
         const REPO = 'momo-janta-party/momo-janta-party';
         
         async function fetchContributors() {
-            try {
-                // Fetch contributors
-                const res = await fetch(`https://api.github.com/repos/${REPO}/contributors`);
-                if (!res.ok) throw new Error('Network response was not ok');
-                const contributors = await res.json();
-                
-                const container = document.getElementById('contributors-container');
-                const loading = document.getElementById('loading');
-                
+            const container = document.getElementById('contributors-container');
+            const loading = document.getElementById('loading');
+            
+            // Fallback data in case of API failure or rate limit
+            const fallbackContributors = [
+                {
+                    login: "DsThakurRawat",
+                    avatar_url: "https://avatars.githubusercontent.com/u/120612261?v=4",
+                    html_url: "https://github.com/DsThakurRawat",
+                    contributions: 24,
+                    work: "<strong style='color: #fff; display: block; margin-bottom: 8px;'>Recent Architectural Work:</strong><ul style='margin:0; padding-left: 20px;'><li style='margin-bottom: 5px;'>Built the entire Momo Janta Party platform.</li><li style='margin-bottom: 5px;'>Added infinite masonry galleries.</li></ul>"
+                },
+                {
+                    login: "ineerajgiri",
+                    avatar_url: "https://avatars.githubusercontent.com/u/58245781?v=4",
+                    html_url: "https://github.com/ineerajgiri",
+                    contributions: 1,
+                    work: "<strong style='color: #fff; display: block; margin-bottom: 8px;'>Recent Architectural Work:</strong><ul style='margin:0; padding-left: 20px;'><li style='margin-bottom: 5px;'>Added MJP-branded issue and PR templates to formalize the revolution.</li></ul>"
+                }
+            ];
+
+            function renderContributors(data) {
                 container.innerHTML = '';
-                
                 let index = 0;
-                for (const user of contributors) {
-                    if (user.type !== 'User') continue; // Skip bots if any
+                for (const user of data) {
                     index++;
-                    
-                    // Fetch their latest commits to show their work
-                    let workDescription = 'Working hard behind the scenes to steam the nation forward.';
-                    try {
-                        const commitRes = await fetch(`https://api.github.com/repos/${REPO}/commits?author=${user.login}&per_page=3`);
-                        if (commitRes.ok) {
-                            const commits = await commitRes.json();
-                            if (commits.length > 0) {
-                                const commitMessages = commits.map(c => {
-                                    // Clean up commit message: split by newline and remove prefix like "feat:" or "fix:" if desired, 
-                                    // but showing the exact commit is also nice for developers.
-                                    let msg = c.commit.message.split('\\n')[0];
-                                    if(msg.length > 60) msg = msg.substring(0, 57) + '...';
-                                    return msg;
-                                });
-                                workDescription = '<strong style="color: #fff; display: block; margin-bottom: 8px;">Recent Architectural Work:</strong><ul style="margin:0; padding-left: 20px;">' + 
-                                                  commitMessages.map(m => \`<li style="margin-bottom: 5px;">\${m}</li>\`).join('') + 
-                                                  '</ul>';
-                            }
-                        }
-                    } catch (e) {
-                        console.error('Could not fetch commits for', user.login);
-                    }
-
                     const badgeHtml = index === 1 ? '<div class="badge">MVP</div>' : '';
-
+                    const workDescription = user.work || '<strong style="color: #fff; display: block; margin-bottom: 8px;">Recent Architectural Work:</strong><br>Working hard behind the scenes to steam the nation forward.';
+                    
                     const card = document.createElement('div');
                     card.className = 'contributor-card';
-                    // Stagger animation delay
                     card.style.animation = \`fadeInUp 0.6s ease \${index * 0.1}s forwards\`;
                     card.style.opacity = '0';
                     card.style.transform = 'translateY(20px)';
@@ -207,24 +194,59 @@
                     \`;
                     container.appendChild(card);
                 }
-                
                 loading.style.display = 'none';
                 
-                // Add keyframes for staggered animation dynamically
-                const styleSheet = document.createElement("style");
-                styleSheet.innerText = \`
-                    @keyframes fadeInUp {
-                        to {
-                            opacity: 1;
-                            transform: translateY(0);
+                if (!document.getElementById('fadeInStyle')) {
+                    const styleSheet = document.createElement("style");
+                    styleSheet.id = 'fadeInStyle';
+                    styleSheet.innerText = \`
+                        @keyframes fadeInUp {
+                            to { opacity: 1; transform: translateY(0); }
                         }
+                    \`;
+                    document.head.appendChild(styleSheet);
+                }
+            }
+
+            try {
+                const res = await fetch(\`https://api.github.com/repos/\${REPO}/contributors\`);
+                if (!res.ok) {
+                    if (res.status === 403 || res.status === 429) {
+                        throw new Error('GitHub API Rate Limit Exceeded.');
                     }
-                \`;
-                document.head.appendChild(styleSheet);
+                    throw new Error(\`Network error: \${res.status}\`);
+                }
+                const contributors = await res.json();
                 
+                const enhancedContributors = await Promise.all(contributors.map(async (user) => {
+                    if (user.type !== 'User') return null;
+                    let userWork = null;
+                    try {
+                        const commitRes = await fetch(\`https://api.github.com/repos/\${REPO}/commits?author=\${user.login}&per_page=3\`);
+                        if (commitRes.ok) {
+                            const commits = await commitRes.json();
+                            if (commits.length > 0) {
+                                const commitMessages = commits.map(c => {
+                                    let msg = c.commit.message.split('\\n')[0];
+                                    if(msg.length > 60) msg = msg.substring(0, 57) + '...';
+                                    return msg;
+                                });
+                                userWork = '<strong style="color: #fff; display: block; margin-bottom: 8px;">Recent Architectural Work:</strong><ul style="margin:0; padding-left: 20px;">' + 
+                                                  commitMessages.map(m => \`<li style="margin-bottom: 5px;">\${m}</li>\`).join('') + 
+                                                  '</ul>';
+                            }
+                        }
+                    } catch (e) {
+                        console.error('Could not fetch commits for', user.login);
+                    }
+                    return { ...user, work: userWork };
+                }));
+
+                renderContributors(enhancedContributors.filter(Boolean));
             } catch (error) {
-                console.error('Error fetching contributors:', error);
-                document.getElementById('loading').innerHTML = '⚠️ Critical failure: Unable to breach GitHub servers.<br><span style="font-size:1rem; color: #ff4444;">Please try again later.</span>';
+                console.error('Error fetching from GitHub:', error.message);
+                loading.innerHTML = \`⚠️ \${error.message}<br><span style="font-size:0.9rem; color: var(--text-muted);">Loading cached contributor data...</span>\`;
+                setTimeout(() => renderContributors(fallbackContributors), 1000); // render fallback after 1s
             }
         }
 
